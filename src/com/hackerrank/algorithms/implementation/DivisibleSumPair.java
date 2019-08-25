@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * divisible-sum-pairs
@@ -25,9 +24,18 @@ public class DivisibleSumPair {
     }
 
     private static int divisibleSumPair(int n, int k, List<Integer> ar) {
-        return IntStream.range(0, n - 1)
-                .map(i -> (int) IntStream.range(i + 1, n).filter(j -> (ar.get(i) + ar.get(j)) % k == 0).count())
-                .sum();
+        int count;
+        int[] mod = new int[k];
+        for (int a : ar) {
+            mod[a % k]++;
+        }
+        count = (mod[0] * (mod[0] - 1)) / 2;
+        for (int i = 1; i < k - i; i++) {
+            count += mod[i] * mod[k - i];
+        }
+        if (k % 2 == 0)
+            count += (mod[k / 2] * (mod[k / 2] - 1)) / 2;
 
+        return count;
     }
 }
