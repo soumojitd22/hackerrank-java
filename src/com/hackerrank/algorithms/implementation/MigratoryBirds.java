@@ -31,8 +31,8 @@ public class MigratoryBirds {
                 .entrySet()
                 .stream()
                 .max(Map.Entry.comparingByValue())
-                .get()
-                .getKey();
+                .map(Map.Entry::getKey)
+                .orElse(0);
 
     }
 }
