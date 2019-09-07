@@ -57,7 +57,7 @@ public class QueensAttack2 {
                 else
                     down = min(r_q - r_o - 1, down);
 
-            } else if ((float) abs(r_o - r_q) / abs(c_o - c_q) == 1) {
+            } else if (abs(r_o - r_q) == abs(c_o - c_q)) {
                 // For diagonals
                 if (r_o > r_q && c_o > c_q) {
                     // For up -right
