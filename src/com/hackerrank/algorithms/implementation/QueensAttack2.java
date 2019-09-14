@@ -40,7 +40,6 @@ public class QueensAttack2 {
         int down_right = min(down, right);
         int down_left = min(down, left);
         for (int[] o : obstacles) {
-
             int r_o = o[0];
             int c_o = o[1];
             if (r_o == r_q) {
@@ -60,21 +59,20 @@ public class QueensAttack2 {
             } else if (abs(r_o - r_q) == abs(c_o - c_q)) {
                 // For diagonals
                 if (r_o > r_q && c_o > c_q) {
-                    // For up -right
+                    // For up - right
                     up_right = min(r_o - r_q - 1, up_right);
                 } else if (r_o > r_q) {
-                    // For up -left
+                    // For up - left
                     up_left = min(r_o - r_q - 1, up_left);
                 } else if (c_o < c_q) {
-                    // For down -left
+                    // For down - left
                     down_left = min(r_q - r_o - 1, down_left);
                 } else {
-                    // For down -right
+                    // For down - right
                     down_right = min(r_q - r_o - 1, down_right);
                 }
             }
         }
-
         return up + down + left + right + up_right + up_left + down_left + down_right;
     }
 }
